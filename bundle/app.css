@@ -425,7 +425,8 @@ th {
 /* css/index.css */
 
 .site {
-	background-color: rgb(255,171,171);
+	background: -webkit-linear-gradient( top , rgba(247,248,250,1) 60% , rgba(247,248,250,0) );
+	background: -moz-linear-gradient( top , rgba(247,248,250,1) 60% , rgba(247,248,250,0) );
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -438,6 +439,7 @@ th {
 }
 
 .site__main {
+	/*background-color: #F7F8FA;*/
 	position: relative;
 
 	align-self: stretch;
@@ -448,21 +450,27 @@ th {
 }
 
 .site__left-sidebar {
-	background-color: rgb(171,255,171);
 /*
 	align-self: stretch;
 	flex-grow: 0.2;
 	flex-basis: 0;
 */
 	position: fixed;
-	width: 14%;
+	width: 170px;
 	height: 100%;
 	left: 0;
 	top: 0;
+
+	padding-left: 20px;
+	padding-top: 60px;
+
+	color: #515151;
+	font-size: 48px;
+	font-weight: 400;
 }
 
 .site__content {
-	margin-left: 20%;
+	margin-left: 170px;
 
 	align-self: stretch;
 	flex-grow: 1;
@@ -470,18 +478,77 @@ th {
 }
 
 .products {
+	position: relative; 
+
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
 .product {
-	background-color: rgb(171,171,255);
-
 	display: flex;
 	width: 50%;
-	height: 250px;
-	margin-bottom: 10px;
+	height: auto;
+}
+
+.product__display { /* 展示的框中内容 */
+	margin: 5px 5px 0;
+	border: 5px solid #D8D8D8;
+	background-color: white;
+	position: relative;
+}
+
+.product__price {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	color: black;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.product__img {
+	width: 100%;
+	height: auto;
+	display: block;
+	padding: 20px;
+}
+
+.product__img img {
+	width: 100%;
+	height: auto;
+}
+
+.product__description {
+	margin-top: 15px;
+	margin-bottom: 40px;
+	position: relative;
+
+	color: #202020;
+	font-size: 18px;
+	padding: 0 5px;
+}
+
+.product__add {
+	width: 60px;
+	height: 60px;
+	padding: 12.5px;
+	background-color: #d8d8d8;
+	border-radius: 30px;
+	margin: 10px auto;
+}
+
+.product__add:hover {
+	background-color: #78a3ca;
+	cursor: pointer;
+}
+
+.product__heart {
+	width: 35px;
+	height: 35px;
+	float: right;
+	display: block;
+	margin: -5px 5px 5px;
 }
 
 .site__right-sidebar {
@@ -490,6 +557,9 @@ th {
 	right: 0;
 	width: 30%;
 	height: 100%;
+
+	background: -webkit-linear-gradient( top , rgba(192,207,221,1) 60% , rgba(192,207,221,0) );
+	background: -moz-linear-gradient( top , rgba(192,207,221,1) 60% , rgba(192,207,221,0) );
 
 /*
 	align-self: stretch;
@@ -502,12 +572,30 @@ th {
 }
 
 .cart {
-	flex-grow: 0.1;
-	flex-basis: 0;
+	width: 100%;
+	flex-grow: 1;
+}
+
+.cart-title {
+	width: 100%;
+	height: 100px;
+	padding-left: 10%;
+	padding-top: 35px;
+	display: block;
+	font-size: 24px;
+	color: #202020;
+
+	background: -webkit-linear-gradient( top , rgba(192,207,221,1) 60% , rgba(192,207,221,0) );
+	background: -moz-linear-gradient( top , rgba(192,207,221,1) 60% , rgba(192,207,221,0) );
+
+	position: absolute;
+	top: 0;
 }
 
 .cart__content {
-	flex-grow: 0.9;
+	padding-top: 100px;
+
+	flex-grow: 1;
 	flex-basis: 0;
 	overflow: scroll;
 
@@ -517,14 +605,211 @@ th {
 }
 
 .cart-item {
-	height: 150px;
+	height: auto;
 	margin-bottom: 20px;
-	background: rgb(171,255,171);
+}
+
+.cart-item__top-part {
+	width: 100%;
+	height: auto;
+	display: flex;
+
+	flex-direction: row;
+}
+
+.cart-item__image {
+	width: 33%;
+	height: auto;
+	padding: 5px 15px;
+	margin-left: 10%;
+	border: 3px solid #d8d8d8;
+	display: block;
+	background-color: white;
+}
+
+.cart-item__image img {
+	width: 100%;
+	height: auto;
+}
+
+.cart-item__top-part__middle {
+	margin: 0 40px 0 20px;
+	display: flex;
+	flex-grow: 100%;
+}
+
+.cart-item__title {
+	margin-top: 10px;
+}
+
+.cart-item__price {
+	margin-top: 0px;
+	font-weight: 400;
+}
+
+.cart-item__qty {
+	width: 33%;
+	height: auto;
+	margin-left: 10%;
+	margin-top: 15px;
+}
+
+.adjust-qty {
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.adjust-qty__button {
+	width: 20px;
+	height: 20px;
+	background-color: #F7F8FA;
+	border-radius: 10px;
+	text-align: center;
+	color: #d8d8d8;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.adjust-qty__number {
+	margin: 0 20px;
+	line-height: 20px;
+	font-size: 18px;
 }
 
 .checkout {
-	height: 300px;
-	background: rgb(171,171,255);
+	width: 100%;
+	height: 400px;
+	/*background: rgb(171,171,255);*/
+}
+
+.checkout__divider {
+	width: 50%;
+	height: 1px;
+	margin: 40px auto 0;
+	border-top: 1px solid #989898;
+}
+
+.checkout__coupon-input {
+	width: 80%;
+	display: block;
+	margin: 40px auto 0;
+
+	font-size: 18px;
+	line-height: 20px;
+	height: 20px;
+}
+
+.checkout__coupon-input-text {
+	width: 80%;
+	display: block;
+	margin: 5px auto 0;
+	color: #dc1a00;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.checkout__amount {
+	width: 80%;
+	margin: 30px auto 0;
+	border: 0;
+	font-size: 20px;
+	font-weight: 400;
+	text-align: left;
+}
+
+.checkout__amount tr {
+	line-height: 40px;
+}
+
+.checkout__amount--strikeout {
+	text-decoration: line-through;
+}
+
+.checkout__amount--number {
+	text-align: right;
+}
+
+.checkout__amount--saving {
+	color: #dc1a00;
+}
+
+.checkout__submit {
+	width: 60%;
+	line-height: 35px;
+	margin: 20px auto 0;
+	color: #F7F8FA;
+	background-color: #80a590;
+	padding: 15px 20px;
+	display: block;
+	font-size: 20px;
+	font-weight: 600;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.site__right-sidebar-toggle {
+	position: fixed;
+	padding: 25px;
+	bottom: 0;
+	right: 20px;
+	background-color: #273147;
+	display: none;
+}
+
+@media (max-width: 950px) {
+	.site__main {
+		flex-grow: 0.6;
+	}
+
+	.site__right-sidebar {
+		width: 40%;
+	}
+
+	.product {
+		width: 100%;
+	}
+}
+
+@media (max-width: 640px) {
+	.site__left-sidebar {
+		display: none;
+	}
+
+	.site__main {
+		flex-grow: 1;
+	}
+
+	.site__content {
+		margin-left: 0;
+	}
+
+	.site__right-sidebar {
+		display: none;
+		width: 320px;
+	}
+
+	.product {
+		width: 50%;
+	}
+
+	.site__right-sidebar-toggle {
+		display: block;
+	}
+
+	body.js-show-right-sidebar .site__right-sidebar {
+		display: flex;
+	}
+
+	body.js-show-right-sidebar .site__right-sidebar-toggle {
+		right: 320px;
+	}
+}
+
+@media (max-width: 500px) {
+	.product {
+		width: 100%;
+	}
 }
 
 body, html {
@@ -569,8 +854,8 @@ body, div, span, a, img, h1, h2, h3, h4, h5 {
 }
 
 body {
-  background-color: #F7F8FA;
-  /*background-color: #FFFFFF;*/
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
   color: #202020;
   font-family: "Avenir Next", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 100;
